@@ -1,0 +1,112 @@
+ 1. Add New Inventory Item
+mermaid
+flowchart TD
+    A[Start] --> B[Admin logs in]
+    B --> C[Enter item details]
+    C --> D[Submit item]
+    D --> E[System validates entry]
+    E --> F{Valid?}
+    F -- Yes --> G[Add to database]
+    F -- No --> H[Show error]
+    G --> I[Notify success]
+    I --> Z[End]
+    H --> C
+Explanation:** Ensures clean entry of inventory data. Addresses scalability by validating input upfront.
+
+2. Register User Account
+mermaid
+flowchart TD
+    A[Start] --> B[User enters details]
+    B --> C[Submit form]
+    C --> D[System validates & sends email]
+    D --> E[User clicks confirmation link]
+    E --> F[Account Activated]
+    F --> G[Notify User]
+    G --> H[End]
+Explanation: Supports secure onboarding. Related to user management FRs.
+
+3. Place Order
+mermaid
+flowchart TD
+    A[Start] --> B[User selects items]
+    B --> C[View Cart]
+    C --> D[Submit Order]
+    D --> E[System checks stock]
+    E --> F{Stock Available?}
+    F -- Yes --> G[Generate Order]
+    F -- No --> H[Notify Out of Stock]
+    G --> I[Notify User]
+    H --> J[Return to cart]
+    I --> K[End]
+    J --> B
+Explanation:Real-time stock checking ensures order accuracy.
+
+4. Process Return
+mermaid
+flowchart TD
+    A[Start] --> B[User requests return]
+    B --> C[System logs return]
+    C --> D[Admin reviews request]
+    D --> E{Approved?}
+    E -- Yes --> F[Process refund]
+    F --> G[Update inventory]
+    E -- No --> H[Reject request]
+    G --> I[Notify User]
+    H --> I
+    I --> Z[End]
+Explanation: Handles full return lifecycle, addresses customer service FR.
+
+5. Generate Stock Report
+mermaid
+flowchart TD
+    A[Start] --> B[Manager logs in]
+    B --> C[Select report range]
+    C --> D[Request report]
+    D --> E[System compiles data]
+    E --> F[Generate PDF/CSV]
+    F --> G[Send report]
+    G --> H[End]
+Explanation:Ensures efficient report generation for decision-making.
+
+
+6. Adjust Inventory Quantity
+mermaid
+flowchart TD
+    A[Start] --> B[Propose Adjustment]
+    B --> C[Review Proposal]
+    C --> D{Approve?}
+    D -- Yes --> E[Update Stock]
+    D -- No --> F[Reject Adjustment]
+    E --> G[Notify Team]
+    F --> G
+    G --> H[End]
+Explanation: Ensures controlled changes to inventory.
+
+
+ 7. Handle Low Stock Alert
+mermaid
+flowchart TD
+    A[Start] --> B[System monitors levels]
+    B --> C{Below threshold?}
+    C -- Yes --> D[Send alert to admin]
+    C -- No --> E[Continue monitoring]
+    D --> F[Admin reviews stock]
+    F --> G[Restock if needed]
+    G --> H[End]
+    E --> H
+Explanation: Proactive inventory management.
+
+8. Create Purchase Request
+mermaid
+flowchart TD
+    A[Start] --> B[Admin selects items]
+    B --> C[Submit PR]
+    C --> D[System logs request]
+    D --> E[Procurement reviews]
+    E --> F{Approve?}
+    F -- Yes --> G[Generate PO]
+    F -- No --> H[Send feedback]
+    G --> I[Send to Supplier]
+    I --> J[End]
+    H --> J
+Explanation:Supports efficient procurement planning.
