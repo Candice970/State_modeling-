@@ -1,0 +1,9 @@
+##Object	                    ##States
+InventoryItem	New →            InStock → Reserved → Sold → Returned → Archived
+UserAccount	Registered →       Active → Suspended → Deactivated
+Order	Created →                Processing → Shipped → Delivered → Canceled
+Supplier	Registered →         Approved → Suspended
+PurchaseRequest	Draft →        Submitted → Approved → Ordered → Received
+ReturnRequest	Initiated →      Approved → Refunded → Closed
+Shipment	Created →            In Transit → Delivered → Confirmed
+StockAdjustment	Proposed →     Reviewed → Approved → Applied
