@@ -1,9 +1,14 @@
-##Object	                    ##States
-InventoryItem	New →            InStock → Reserved → Sold → Returned → Archived
-UserAccount	Registered →       Active → Suspended → Deactivated
-Order	Created →                Processing → Shipped → Delivered → Canceled
-Supplier	Registered →         Approved → Suspended
-PurchaseRequest	Draft →        Submitted → Approved → Ordered → Received
-ReturnRequest	Initiated →      Approved → Refunded → Closed
-Shipment	Created →            In Transit → Delivered → Confirmed
-StockAdjustment	Proposed →     Reviewed → Approved → Applied
+1. InventoryItem
+# mermaid
+stateDiagram-v2
+    [*] --> New
+    New --> InStock : Item added
+    InStock --> Reserved : Order placed
+    Reserved --> Sold : Payment confirmed
+    Sold --> Returned : Return requested
+    Returned --> InStock : Restocked
+    Sold --> Archived : Archived manually
+
+Explanation:
+- This diagram reflects the full lifecycle of an inventory item.
+- Maps to FR-002: "The system must track item availability and status."
