@@ -1,0 +1,92 @@
+1. InventoryItem
+mermaid
+stateDiagram-v2
+    [*] --> New
+    New --> InStock : Item added
+    InStock --> Reserved : Order placed
+    Reserved --> Sold : Payment confirmed
+    Sold --> Returned : Return requested
+    Returned --> InStock : Restocked
+    Sold --> Archived : Archived manually
+  Explanation:
+- This diagram reflects the full lifecycle of an inventory item.
+- Maps to FR-002: "The system must track item availability and status."
+
+---
+
+2. UserAccount
+mermaid
+stateDiagram-v2
+    [*] --> Registered
+    Registered --> Active : Email verified
+    Active --> Suspended : Violated terms
+    Suspended --> Active : Reinstated
+    Active --> Deactivated : User action
+ Explanation:
+- Shows transitions based on user actions and admin decisions.
+- Maps to FR-004: "The system must allow user account management."
+
+
+3. Order
+mermaid
+stateDiagram-v2
+    [*] --> Created
+    Created --> Processing : Inventory confirmed
+    Processing --> Shipped : Order packed
+    Shipped --> Delivered : Confirmed delivery
+    Created --> Canceled : User cancels
+Explanation:
+- Reflects the order fulfillment pipeline.
+- FR-005: Users can cancel orders.
+
+4. Supplier
+mermaid
+stateDiagram-v2
+    [*] --> Registered
+    Registered --> Approved : Admin approval
+    Approved --> Suspended : Performance issues
+    Suspended --> Approved : Reinstated
+ Explanation:
+- FR-010: Manage supplier lifecycle.
+
+5. PurchaseRequest
+mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Submitted : User submits request
+    Submitted --> Approved : Manager approves
+    Approved --> Ordered : PO created
+    Ordered --> Received : Stock delivered
+ Explanation:
+- FR-011: System supports purchase management.
+
+6. ReturnRequest
+mermaid
+stateDiagram-v2
+    [*] --> Initiated
+    Initiated --> Approved : Valid return
+    Approved --> Refunded : Refund processed
+    Refunded --> Closed : Completed
+Explanation:
+- FR-012: System handles product returns.
+
+7. Shipment
+mermaid
+stateDiagram-v2
+    [*] --> Created
+    Created --> InTransit : Courier picked up
+    InTransit --> Delivered : Delivered to client
+    Delivered --> Confirmed : User confirms
+ Explanation:
+- FR-007: Shipment tracking enabled.
+
+ 8. StockAdjustment
+mermaid
+stateDiagram-v2
+    [*] --> Proposed
+    Proposed --> Reviewed : Inventory manager reviews
+    Reviewed --> Approved : Approved for update
+    Approved --> Applied : Stock updated
+ Explanation:
+- FR-009: Allow manual stock corrections.
+
